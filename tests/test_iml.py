@@ -3,11 +3,9 @@ sys.path.append("../")
 
 
 from iml import iml
-from iml.ext import load_tsv
 
-mat = load_tsv()
-
-i = iml(mat)
+i = iml()
+i.load("xx.tsv")
 i.desc()
 i.select_features()
 i.use_features()
