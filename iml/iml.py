@@ -5,25 +5,24 @@ from select_models import select_models_
 
 class iml(object):
 
-    def __init__(self,matrix_file):
+    def __init__(self,matrix_file)
         self.matrix_file = matrix_file
         self.model = None
         self.args = None
         self.data = None
         self.target = None
         self.feature_names = None
-        self.target_names = None
-        self.feature_selected = None
+        self.target_name = None
     
-    def load(self,format="tsv"):
+    def load(self,matrix_file,target_name,feature_selected=None,sep="tsv"):
         """load input file to iml-data format...
 
         """
-        data,target,colnames,feature_names = oad_(self.matrix_file)
+        data,target,feature_names,target_name = load_(self.matrix_file)
         self.data = data
         self.target = target
         self.feature_names = feature_names
-        self.target_names = target_names
+        self.target_name = target_name
 
     def desc(self):
         """make description for every features including, distribution and \
@@ -42,7 +41,7 @@ class iml(object):
                          self.target_names)
 
     def use_features(self,selected):
-        self.feature_selected = feature_names
+        self.load(self.matrix_file,target_name,features_selected=selected)
 
     def select_models(self):
         model = select_models_(self.data,self.target,self.feature_names,\
@@ -52,10 +51,19 @@ class iml(object):
         self.model = model
 
     def boosting(self):
-        pass
+        args,model = boost_(self.model,self.data,self.target,self.feature_names,\
+                            self.target_names)
+        self.args = args
+        self.model = model
 
     def validate(self):
-        pass
+        """k-fold validation
+        """
+        validata_(self,model,self.data,self.target,self.feature_names,\
+                            self.target_names)
 
     def save(self):
+        """save model to file through sklean-joblib
+        """
         pass
+
