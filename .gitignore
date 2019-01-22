@@ -1,3 +1,7 @@
 *.pyc
 *.log
+*.swp
+tests/*
+!tests/*.py
+!tests/data
 
