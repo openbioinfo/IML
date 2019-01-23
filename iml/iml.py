@@ -41,7 +41,8 @@ class iml(object):
                          self.target_names)
 
     def use_features(self,selected):
-        self.load(self.matrix_file,target_name,features_selected=selected)
+        self.load(self.data,self.target,self.features_names,self.tartets ,\
+                  features_selected)
 
     def select_models(self):
         model = select_models_(self.data,self.target,self.feature_names,\
