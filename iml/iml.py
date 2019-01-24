@@ -5,8 +5,8 @@ from select_models import select_models_
 
 class iml(object):
 
-    def __init__(self,matrix_file)
-        self.matrix_file = matrix_file
+    def __init__(self)
+        self.matrix_file = None
         self.model = None
         self.args = None
         self.data = None
@@ -35,27 +35,33 @@ class iml(object):
 
 
     def select_features(self):
-        """select most-relavant features using RF-algorithems.
+        """select most-relavant features using RF-algorithems @sx.
         """
         selected = select_features_(self.data,self.target,self.feature_names,\
                          self.target_names)
 
     def use_features(self,selected):
-        self.load(self.data,self.target,self.features_names,self.tartets ,\
+        """
+        """
+        data,target,features_names,target_name = (self.data,self.target,self.features_names,self.tartets ,\
                   features_selected)
+        self.data = data
+        self.target = target
+        
 
     def select_models(self):
-        model = select_models_(self.data,self.target,self.feature_names,\
+        best_model,models  = select_models_(self.data,self.target,self.feature_names,\
                                self.target_names) 
+        return best_model,models
 
-    def use_model(self,model):
-        self.model = model
+    def load_model(self,model):
+        self.model = load_model_(model,self.data,self.target,self.feature_names,\
+                                 self.target_names)
 
     def boosting(self):
-        args,model = boost_(self.model,self.data,self.target,self.feature_names,\
+        model  = boost_(self.model,self.data,self.target,self.feature_names,\
                             self.target_names)
-        self.args = args
-        self.model = model
+        self.load_model(model)
 
     def validate(self):
         """k-fold validation
