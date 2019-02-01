@@ -197,7 +197,7 @@ def Pie(data, targets,startmark=0):
                             startangle=140)
         pltX.close()
         return wedges_AC
-    
+    target_name = targets.keys()[0]
     df_all = pd.DataFrame(dict(data,**targets))
     target_vals = targets[target_name].cat.categories
 
