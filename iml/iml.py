@@ -43,12 +43,11 @@ class iml(object):
     def use_features(self,selected):
         """
         """
-        data,target,features_names,target_name = (self.data,self.target,self.features_names,self.tartets ,\
+        data,target,feature_names,target_name = use_features_(self.data,self.target,self.features_names,self.tartets ,\
                   features_selected)
         self.data = data
-        self.target = target
+        self.feature_names = feature_names
         
-
     def select_models(self):
         best_model,models  = select_models_(self.data,self.target,self.feature_names,\
                                self.target_names) 
