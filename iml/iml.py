@@ -19,11 +19,11 @@ class iml(object):
         self.feature_names = None
         self.target_name = None
     
-    def load(self,matrix_file,target_name,feature_selected=None,features_maps=None,target_map=None):
+    def load(self,matrix_file,target_name,feature_names=None,features_maps=None,target_map=None):
         """load input file to iml-data format...
 
         """
-        data,target,feature_names,target_name = load_(matrix_file,target_name,feature_selected,features_maps,target_map)
+        data,target,feature_names,target_name = load_(matrix_file,target_name,feature_names,features_maps,target_map)
         self.data = data
         self.target = target
         self.feature_names = feature_names
