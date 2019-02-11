@@ -5,7 +5,7 @@ __author__ = "D J. Kong"
 from copy import copy
 from ext import autodetect 
 
-def load_(infile,target_name,features_selected=None,features_maps=None,target_map=None,onehot=False,sep="\t"):
+def load_(infile,target_name,features_selected=None,features_maps=None,target_map=None):
     """load file to IML-data object
     """
     fp = open(infile)

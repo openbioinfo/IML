@@ -1,5 +1,9 @@
 
 
+def keep(x):
+    return x
+
+
 def percent(i,default=''):
     try:
         i = i[:-1]
